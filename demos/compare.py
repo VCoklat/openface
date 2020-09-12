@@ -67,7 +67,7 @@ def getRep(imgPath):
         print("Processing {}.".format(imgPath))
     bgrImg = cv2.imread(imgPath)
     if bgrImg is None:
-        raise Exception("Unable to load image: {}".format(imgPath))
+        print("Unable to load image: {}".format(imgPath))
     rgbImg = cv2.cvtColor(bgrImg, cv2.COLOR_BGR2RGB)
 
     if args.verbose:
@@ -76,7 +76,7 @@ def getRep(imgPath):
     start = time.time()
     bb = align.getLargestFaceBoundingBox(rgbImg)
     if bb is None:
-        raise Exception("Unable to find a face: {}".format(imgPath))
+        print("Unable to find a face: {}".format(imgPath))
     if args.verbose:
         print("  + Face detection took {} seconds.".format(time.time() - start))
 
